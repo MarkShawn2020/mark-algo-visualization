@@ -41,6 +41,7 @@ npm install --save-dev typescript
 # - [Use in TypeScript - Ant Design](https://ant.design/docs/react/use-in-typescript)
 yarn add antd
 yarn create react-app antd-demo-ts --template typescript
+npm install --save @ant-design/icons
 
 # tailwindcss support
 # - [Install Tailwind CSS with Next.js - Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
