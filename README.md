@@ -31,3 +31,19 @@ antd 为主体，算法演示部分可能使用 echarts 或者 d3。
 - Email: 877210964@qq.com
 - Wechat: MarkShawn2020
 - 公众号：南川笔记
+
+## Configure History
+```
+# typescript support
+npm install --save-dev typescript
+
+# antd support
+# - [Use in TypeScript - Ant Design](https://ant.design/docs/react/use-in-typescript)
+yarn add antd
+yarn create react-app antd-demo-ts --template typescript
+
+# tailwindcss support
+# - [Install Tailwind CSS with Next.js - Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
+```
