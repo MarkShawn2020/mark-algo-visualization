@@ -28,6 +28,6 @@ antd 为主体，算法演示部分可能使用 echarts 或者 d3。
 - 本项目是长期项目，欢迎 issue、pr、star与fork
 
 ## 联系我
-- Email: 877210964qq.com
+- Email: 877210964@qq.com
 - Wechat: MarkShawn2020
 - 公众号：南川笔记
