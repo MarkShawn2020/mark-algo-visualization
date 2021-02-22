@@ -5,3 +5,18 @@
 
 ## 技术栈
 目前前端使用 next 框架，语言是 typescript。
+
+## 算法清单
+
+### 图论
+#### 最短路径算法
+- [ ] dijkstra
+- [ ] Bellman-Ford
+- [ ] SPFA
+- [ ] floyd
+
+### 红黑树
+
+### 数论
+
+### 
