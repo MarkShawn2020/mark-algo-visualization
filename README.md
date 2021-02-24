@@ -8,7 +8,7 @@
 目前前端使用 next 框架，语言是 typescript。
 
 ### UI框架
-antd 为主体，算法演示部分可能使用 echarts 或者 d3。
+antd 为主体，算法演示部分使用 E6、echarts 或者 d3。
 
 
 ## 算法清单
@@ -75,9 +75,19 @@ const text = readFileSync('path-to-file.txt', 'utf8');
 ### Resizer Bar Component Implementation
 > thanks for: LeetCode-OpenSource/react-simple-resizer: 🐙 An intuitive React component set for multi-column resizing - https://github.com/LeetCode-OpenSource/react-simple-resizer
 
-### Code typegraphy
+### Code typography
 > - react-syntax-highlighter - npm - https://www.npmjs.com/package/react-syntax-highlighter
 > - [react-syntax-highlighter/react-syntax-highlighter: syntax highlighting component for react with prismjs or highlightjs ast using inline styles](https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme)
 ```shell
 npm install react-syntax-highlighter --save
 ```
+
+### Environment Variable Config
+> - [Basic Features: Environment Variables | Next.js](https://nextjs.org/docs/basic-features/environment-variables)
+
+attention: 环境变量默认不暴露给浏览器，如需浏览器使用，需要加前缀`NEXT_PUBLIC_` 
+
+### 服务端数据加载与fs模块的使用（重要）
+> - [Basic Features: Data Fetching | Next.js](https://nextjs.org/docs/basic-features/data-fetching)
+
+注意，`getStaticProps`只能在`pages`下使用，而每个`page`又是一个网页，因此给我们的启示是在`pages`文件里使用一些变量的形式向组件传送数据

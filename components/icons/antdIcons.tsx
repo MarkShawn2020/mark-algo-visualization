@@ -1,6 +1,7 @@
-import {createFromIconfontCN} from "@ant-design/icons"
-const MarkIcon = createFromIconfontCN({
-    scriptUrl: "//at.alicdn.com/t/font_2381942_flmbp32qh0g.js"
-})
+import { createFromIconfontCN } from "@ant-design/icons";
 
-export default MarkIcon
+const MarkIcon = createFromIconfontCN({
+  scriptUrl: process.env.NEXT_PUBLIC_ICON_URL,
+});
+
+export default MarkIcon;
