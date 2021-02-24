@@ -1,5 +1,6 @@
-import '../styles/globals.css'
 import "antd/dist/antd.css";
+import '../styles/globals.css'
+import "../styles/react-resizable.css"
 
 
 function MyApp({ Component, pageProps }) {

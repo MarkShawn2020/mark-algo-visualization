@@ -1,4 +1,4 @@
-import MarkLayout from "./layout/main";
+import MarkLayout from "./main";
 
 const Index = () => (
     <div className="min-h-screen">

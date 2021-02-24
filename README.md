@@ -33,18 +33,51 @@ antd 为主体，算法演示部分可能使用 echarts 或者 d3。
 - 公众号：南川笔记
 
 ## Configure History
+### typescript support
 ```
-# typescript support
 npm install --save-dev typescript
+```
 
-# antd support
-# - [Use in TypeScript - Ant Design](https://ant.design/docs/react/use-in-typescript)
+### antd support
+> [Use in TypeScript - Ant Design](https://ant.design/docs/react/use-in-typescript)
+```
 yarn add antd
 yarn create react-app antd-demo-ts --template typescript
 npm install --save @ant-design/icons
-
-# tailwindcss support
-# - [Install Tailwind CSS with Next.js - Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
+npm install --save @antv/g6
+```
+### tailwindcss support
+> [Install Tailwind CSS with Next.js - Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
+```
 npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 npx tailwindcss init -p
+```
+
+### any text file import support
+> [Import .html or .txt files as strings? · Issue #2086 · vercel/next.js](https://github.com/vercel/next.js/issues/2086)
+1. Install static file babel plugin:
+```
+npm install babel-plugin-static-fs --save-dev
+```
+2. Create a custom .babelrc file:
+```text
+{
+  "plugins": ["babel-plugin-static-fs"],
+  "presets": ["next/babel"]
+}
+```
+3. Import your static files:
+```js
+import { readFileSync } from 'fs';
+const text = readFileSync('path-to-file.txt', 'utf8');
+```
+
+### Resizer Bar Component Implementation
+> thanks for: LeetCode-OpenSource/react-simple-resizer: 🐙 An intuitive React component set for multi-column resizing - https://github.com/LeetCode-OpenSource/react-simple-resizer
+
+### Code typegraphy
+> - react-syntax-highlighter - npm - https://www.npmjs.com/package/react-syntax-highlighter
+> - [react-syntax-highlighter/react-syntax-highlighter: syntax highlighting component for react with prismjs or highlightjs ast using inline styles](https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme)
+```shell
+npm install react-syntax-highlighter --save
 ```
