@@ -91,3 +91,15 @@ attention: 环境变量默认不暴露给浏览器，如需浏览器使用，需
 > - [Basic Features: Data Fetching | Next.js](https://nextjs.org/docs/basic-features/data-fetching)
 
 注意，`getStaticProps`只能在`pages`下使用，而每个`page`又是一个网页，因此给我们的启示是在`pages`文件里使用一些变量的形式向组件传送数据
+
+### Echarts + Jquery Support
+```shell
+npm i --save-dev @types/jquery
+npm i @types/echarts
+```
+1. echarts-react 只对react做了简单并偷懒的封装，比如说Option直接定义成了`any`，很不方便，对于tree option，应该用`"echarts/charts"`中的 `TreeSeriesOption`
+
+### typescript omit support
+> - [typescript - Exclude property from type - Stack Overflow](https://stackoverflow.com/questions/48215950/exclude-property-from-type)
+
+

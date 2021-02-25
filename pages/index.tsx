@@ -8,7 +8,7 @@ import PanelCase from "../components/AlgoVisualization/layout/PanelCase";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 const { Header, Content, Sider } = Layout;
 
 const MarkLayout = ({ Case, Code }) => (
@@ -27,29 +27,24 @@ const MarkLayout = ({ Case, Code }) => (
       </Sider>
 
       <Layout>
-        {/*<Breadcrumb style={{margin: '16px 0'}}>*/}
-        {/*    <Breadcrumb.Item>Home</Breadcrumb.Item>*/}
-        {/*    <Breadcrumb.Item>List</Breadcrumb.Item>*/}
-        {/*    <Breadcrumb.Item>App</Breadcrumb.Item>*/}
-        {/*</Breadcrumb>*/}
-
         <Content className="site-layout-background min-h-screen text-red-500">
           <section>
             <Resizer.Container>
               <Resizer.Section minSize={600}>
-                <div>
-                  <PanelDisplay />
-                  <PanelConsole />
-                </div>
+                <PanelDisplay Case={Case} />
+                <PanelConsole />
               </Resizer.Section>
 
-              <Resizer.Bar size={10} className="bg-gray-200" />
+              <Resizer.Bar
+                size={10}
+                className="bg-gray-200 flex justify-center items-center text-white  "
+              >
+                {"|||"}
+              </Resizer.Bar>
 
               <Resizer.Section>
-                <div>
-                  <PanelCode Code={Code} />
-                  <PanelCase Case={Case} />
-                </div>
+                <PanelCode Code={Code} />
+                <PanelCase Case={Case} />
               </Resizer.Section>
             </Resizer.Container>
           </section>

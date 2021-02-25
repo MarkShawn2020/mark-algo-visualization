@@ -1,10 +1,14 @@
 import { Card } from "antd";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-const PanelCase = ({ Case }) => {
+interface PanelCase {
+  Case: string;
+}
+
+const PanelCase = ({ Case }: PanelCase) => {
   return (
     <Card title={"case"}>
-      <SyntaxHighlighter language={"text"}>{Case || ""}</SyntaxHighlighter>
+      <SyntaxHighlighter language={"text"}>{Case}</SyntaxHighlighter>
     </Card>
   );
 };

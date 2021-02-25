@@ -1,13 +1,24 @@
-import { Card } from "antd";
+import { Breadcrumb, Card } from "antd";
 import dynamic from "next/dynamic";
-const CompTrie = dynamic(() => import("../character/trie/Trie"), {
+
+const DisplayTrieDynamic = dynamic(import("../character/trie/DisplayTrie"), {
   ssr: false,
 });
 
-const PanelDisplay = () => {
+const CompBreadcrumb = () => (
+  <div>
+    <Breadcrumb>
+      <Breadcrumb.Item>算法可视化</Breadcrumb.Item>
+      <Breadcrumb.Item>字符串</Breadcrumb.Item>
+      <Breadcrumb.Item>字典树</Breadcrumb.Item>
+    </Breadcrumb>
+  </div>
+);
+
+const PanelDisplay = ({ Case }) => {
   return (
-    <Card title={"display"} id={"container"}>
-      <CompTrie width={600} height={600} />
+    <Card title={<CompBreadcrumb />}>
+      <DisplayTrieDynamic Case={Case} />
     </Card>
   );
 };
