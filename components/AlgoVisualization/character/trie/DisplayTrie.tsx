@@ -1,116 +1,115 @@
-import * as echarts from "echarts/core";
-import { TooltipComponent } from "echarts/components";
-import { TreeChart, TreeSeriesOption } from "echarts/charts";
-import { CanvasRenderer } from "echarts/renderers";
-import EChartsReact, { EChartsInstance } from "echarts-for-react";
-
-echarts.use([TooltipComponent, TreeChart, CanvasRenderer]);
-
+import EChartsReact from "echarts-for-react";
 import { TrieNodeItemOption } from "./G6_sample_data";
-import { EChartOption } from "echarts";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Button } from "antd";
+import { useEffect, useRef, useState } from "react";
+import { Breadcrumb, Button, Card, message } from "antd";
+import { DisplayTrieProps, TrieOption } from "./Trie.ds";
+import { defaultOption, defaultRoot } from "./const";
+import SyntaxHighlighter from "react-syntax-highlighter";
 
-interface TrieSeries extends Omit<TreeSeriesOption, "data"> {
-  data: TrieNodeItemOption[];
-}
+const deepCopy = (e) => JSON.parse(JSON.stringify(e));
 
-interface TrieOption extends Omit<EChartOption, "series"> {
-  series: TrieSeries[];
-}
+const CompBreadcrumb = () => (
+  <div>
+    <Breadcrumb>
+      <Breadcrumb.Item>算法可视化</Breadcrumb.Item>
+      <Breadcrumb.Item>字符串</Breadcrumb.Item>
+      <Breadcrumb.Item>构造字典树</Breadcrumb.Item>
+    </Breadcrumb>
+  </div>
+);
 
-interface DisplayTrieProps {
-  Case: string;
-}
+const CompTrieControls = ({ content, addChar, addStr, reRun }) => {
+  return (
+    <Card
+      title={"console"}
+      extra={
+        <div className="inline-flex">
+          <Button type={"primary"} className="mr-2" onClick={addChar}>
+            下一个字符
+          </Button>
 
-export const deepCopy = (obj: object) => {
-  return JSON.parse(JSON.stringify(obj));
-};
+          <Button type={"primary"} className="mr-2" onClick={addStr}>
+            下一个字符串
+          </Button>
 
-const getDepth = (tree: TrieNodeItemOption) => {
-  let que: TrieNodeItemOption[] = [];
-  let i = 0,
-    j = 0,
-    h = 0;
-  for (let i = 0; i < tree.children.length; ++i) {
-    que.push(tree.children[i]);
-    ++j;
-  }
-  while (i < j) {
-    ++h;
-    const node = que[i++];
-    for (let i = 0; i < node.children.length; ++i) {
-      que.push(node.children[i]);
-      ++j;
-    }
-  }
-  return h;
+          <Button type={"primary"} className="mr-2" onClick={reRun}>
+            重新运行
+          </Button>
+        </div>
+      }
+    >
+      <SyntaxHighlighter
+        language={"plain-text"}
+        customStyle={{
+          maxHeight: 200,
+          overflow: "auto",
+          display: "flex",
+          flexDirection: "column-reverse",
+        }}
+      >
+        {content.join("\n")}
+      </SyntaxHighlighter>
+    </Card>
+  );
 };
 
 export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
-  const seqs = Case.split("\n").slice(1, -1); // 字符串数组
+  console.log({ CaseInDisplay: Case });
 
-  const [step, setStep] = useState(1); // 总共第几个字符（字符id）
-  const seq_i = useRef(0); // 第几个字符串
-  const seq_j = useRef(0); // 字符串内第几个字符
-  const isOver = useRef<boolean>(false);
-  const root: TrieNodeItemOption = {
-    id: 0,
-    name: "root",
-    value: "",
-    itemStyle: {
-      borderColor: "#fff",
-    },
-    children: [],
-  };
-  const refRoot = useRef<TrieNodeItemOption>(root);
-  const refNode = useRef<TrieNodeItemOption>(root);
+  const refLogs = useRef<Array<string>>([]);
+
+  const [step, setStep] = useState(0); // 总共第几个字符（字符id）
+  const refSeqs = useRef<Array<string>>(null); // 字符串数组
+  const refSeq_i = useRef(0); // 第几个字符串
+  const refSeq_j = useRef(0); // 字符串内第几个字符
+  const refRoot = useRef<TrieNodeItemOption>(null);
+  const refNode = useRef<TrieNodeItemOption>(null);
+  const refOption = useRef<TrieOption>(deepCopy(defaultOption));
   const refEchart = useRef<EChartsReact>(null);
-  const refOption = useRef<TrieOption>({
-    tooltip: {
-      trigger: "item",
-      triggerOn: "mousemove",
-    },
 
-    series: [
-      {
-        type: "tree",
-        data: [],
+  const isFinished = (): boolean => {
+    let f = refSeq_i.current === refSeqs.current.length;
+    if (f) message.warn("已经结束啦~").then();
+    return f;
+  };
 
-        left: "2%",
-        right: "2%",
-        top: "4%",
-        bottom: "20%",
+  const initOption = () => {
+    refLogs.current.splice(0);
+    refLogs.current.push("程序「构造字典树」已启动");
+    let option = deepCopy(defaultOption);
+    let r = (refRoot.current = refNode.current = deepCopy(defaultRoot));
+    option.series[0].data = [r];
+    refOption.current = option;
+    refSeqs.current = Case.split("\n").filter((i) => i.length > 0);
+    refSeq_i.current = refSeq_j.current = 0;
 
-        symbol: "circle",
-        symbolSize: 40,
-        orient: "vertical",
-        expandAndCollapse: false, // 是否自动收起结点：否。否则不利于动画演示
+    let rc = refEchart.current.getEchartsInstance();
+    rc.clear(); // very very important !
+    rc.setOption(refOption.current, true);
+    setStep(1);
+  };
 
-        label: {
-          position: "inside",
-          rotate: 0,
-          verticalAlign: "middle",
-          align: "center",
-          fontSize: 20,
-        },
+  const updateOption = () => {
+    refEchart.current.getEchartsInstance().setOption(refOption.current, false);
+  };
 
-        tooltip: {
-          formatter: ({ data }) =>
-            ["id: " + data.id, "value: " + data.value].join("</br>"),
-        },
+  useEffect(() => {
+    initOption();
+  }, [Case]);
 
-        animationDurationUpdate: 750,
-      },
-    ],
-  });
+  useEffect(() => {
+    updateOption();
+  }, [step]); // 内部按钮操作触发
 
   const addUnit = (step: number) => {
     refNode.current.itemStyle.shadowBlur = 0;
-    if (seq_j.current === 0) refNode.current = refRoot.current;
+    if (refSeq_j.current === 0) refNode.current = refRoot.current;
     let node: TrieNodeItemOption = refNode.current;
-    let seq = seqs[seq_i.current];
-    let ch = seq[seq_j.current];
+    let seq = refSeqs.current[refSeq_i.current];
+    let ch = seq[refSeq_j.current];
+    refLogs.current.push(
+      `单步更新 - step: ${step}, i: ${refSeq_i.current}, j: ${refSeq_j.current}, char: ${ch}`
+    );
 
     // update child
     let child_i = node.children.findIndex((item) => item.name === ch);
@@ -124,7 +123,7 @@ export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
         value: node.value + ch,
         itemStyle: {
           borderColor: "#fff",
-          color: seq_j.current === seq.length - 1 ? "#c33" : "#ccc",
+          color: refSeq_j.current === seq.length - 1 ? "#c33" : "#ccc",
         },
         children: [],
       };
@@ -134,60 +133,47 @@ export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
     child.itemStyle.shadowColor = "#0a0";
 
     // update refs
-    if (++seq_j.current === seq.length) {
-      seq_j.current = 0;
-      ++seq_i.current;
-      if (seq_i.current === seqs.length) {
-        isOver.current = true;
-      }
+    if (++refSeq_j.current === seq.length) {
+      refSeq_j.current = 0;
+      ++refSeq_i.current;
     }
     refNode.current = child;
   };
 
   const addChar = () => {
-    if (isOver.current) {
-      console.log("over!");
-      return;
-    }
+    if (isFinished()) return;
     addUnit(step);
     setStep(step + 1);
   };
 
   const addStr = () => {
-    if (isOver.current) {
-      console.log("over!");
-      return;
-    }
+    if (isFinished()) return;
     let Step = step;
     do {
       addUnit(Step);
       ++Step;
-    } while (seq_j.current !== 0);
+    } while (refSeq_j.current !== 0);
     setStep(Step);
   };
 
-  useEffect(() => {
-    refOption.current.series[0].data = [refRoot.current];
-    // - [echarts-for-react中数据发生变化，如何让图表实时更新。 - SegmentFault 思否](https://segmentfault.com/q/1010000017302705/a-1020000017857113)
-    refEchart.current.getEchartsInstance().setOption(refOption.current);
-  }, [step]);
-
   return (
     <div>
-      <EChartsReact
-        option={refOption.current}
-        ref={refEchart}
-        style={{ height: 600, width: 600 }}
-      />
-      <div className="inline-flex">
-        <Button type={"primary"} className="mr-2" onClick={addChar}>
-          Next Char
-        </Button>
+      <Card title={<CompBreadcrumb />}>
+        <EChartsReact
+          option={refOption.current}
+          notMerge={true}
+          ref={(e) => (refEchart.current = e)}
+          style={{ height: 400, width: 600 }}
+          opts={{ renderer: "svg" }}
+        />
+      </Card>
 
-        <Button type={"primary"} className="mr-2" onClick={addStr}>
-          Next Str
-        </Button>
-      </div>
+      <CompTrieControls
+        reRun={initOption}
+        addStr={addStr}
+        addChar={addChar}
+        content={refLogs.current}
+      />
     </div>
   );
 };

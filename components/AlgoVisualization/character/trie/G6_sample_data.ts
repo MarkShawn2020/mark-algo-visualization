@@ -1,5 +1,3 @@
-import { TreeSeriesOption } from "echarts/charts";
-import { SeriesDataType } from "echarts/types/src/util/types";
 import { TreeSeriesNodeItemOption } from "echarts/types/src/chart/tree/TreeSeries";
 
 export interface TrieNodeItemOption extends TreeSeriesNodeItemOption {

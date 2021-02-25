@@ -81,6 +81,21 @@ const text = readFileSync('path-to-file.txt', 'utf8');
 ```shell
 npm install react-syntax-highlighter --save
 ```
+但是`react-syntax-highlighter`只支持渲染，不支持编辑，所以需要额外安装
+```shell
+npm i prismjs -S
+npm install react-simple-code-editor
+```
+但是这个库并不好用。
+换！
+```shell
+yarn add react-monaco-editor
+```
+最后历经千辛万苦，从`react-monaco-editor`换到`@monaco-editor/react`，还是在一个博客的评论下看到的，天呐，不用hack `webpack`还好用到哭，真是皇天不负有心人!
+- [(17) How to Add Monaco Editor to a Next.js app - YouTube](https://www.youtube.com/watch?v=13UVFrGe80o)
+- [How To Add Monaco Editor to a Next.js app - DEV Community](https://dev.to/swyx/how-to-add-monaco-editor-to-a-next-js-app-ha3)
+- [@monaco-editor/react - npm](https://www.npmjs.com/package/@monaco-editor/react)
+
 
 ### Environment Variable Config
 > - [Basic Features: Environment Variables | Next.js](https://nextjs.org/docs/basic-features/environment-variables)
@@ -97,9 +112,18 @@ attention: 环境变量默认不暴露给浏览器，如需浏览器使用，需
 npm i --save-dev @types/jquery
 npm i @types/echarts
 ```
-1. echarts-react 只对react做了简单并偷懒的封装，比如说Option直接定义成了`any`，很不方便，对于tree option，应该用`"echarts/charts"`中的 `TreeSeriesOption`
+- echarts-react 只对react做了简单并偷懒的封装，比如说Option直接定义成了`any`，很不方便，对于tree option，应该用`"echarts/charts"`中的 `TreeSeriesOption`
+- [echarts-for-react中数据发生变化，如何让图表实时更新。 - SegmentFault 思否](https://segmentfault.com/q/1010000017302705/a-1020000017857113)
+
+解决了重新渲染echarts的bug（耗时一晚上，哭了）
+    - [ECharts: Uncaught Error: `setOption` should not be called during main process_第一段代码的博客-CSDN博客](https://blog.csdn.net/godot06/article/details/109474771)
 
 ### typescript omit support
 > - [typescript - Exclude property from type - Stack Overflow](https://stackoverflow.com/questions/48215950/exclude-property-from-type)
 
+### 滑动底部
+因为模拟了一个`terminal`输出，所以需要不断滚动到底部。
+
+最佳解决方案是用`flex`，感谢这位回答
+- [javascript - Keep overflow div scrolled to bottom unless user scrolls up - Stack Overflow](https://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up)
 
