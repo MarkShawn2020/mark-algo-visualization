@@ -108,7 +108,7 @@ export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
     let seq = refSeqs.current[refSeq_i.current];
     let ch = seq[refSeq_j.current];
     refLogs.current.push(
-      `单步更新 - step: ${step}, i: ${refSeq_i.current}, j: ${refSeq_j.current}, char: ${ch}`
+      `单步更新 - step: ${step}, i: ${refSeq_i.current}, str: "${seq}" j: ${refSeq_j.current}, char: "${ch}"`
     );
 
     // update child
@@ -126,6 +126,35 @@ export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
           color: refSeq_j.current === seq.length - 1 ? "#c33" : "#ccc",
         },
         children: [],
+        // label: {
+        //   position: "right",
+        //   distance: 40,
+        //   fontSize: 14,
+        //   formatter: "{a|{a}}\n{hr|}\n{b|{b}}",
+        //   backgroundColor: "#F6F8FC",
+        //   borderColor: "#8C8D8E",
+        //   borderWidth: 1,
+        //   borderRadius: 4,
+        //   rich: {
+        //     a: {
+        //       color: "#6e7079",
+        //       lineHeight: 22,
+        //       align: "center",
+        //     },
+        //     hr: {
+        //       borderColor: "#8C8D8E",
+        //       width: "100%",
+        //       borderWidth: 1,
+        //       height: 0,
+        //     },
+        //     b: {
+        //       color: "#4C5058",
+        //       fontSize: 14,
+        //       fontWeight: "bold",
+        //       lineHeight: 33,
+        //     },
+        //   },
+        // },
       };
       node.children.push(child);
     }

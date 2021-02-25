@@ -13,7 +13,7 @@ export const PanelCode = ({ Code: Code }) => {
         theme={"light"}
         defaultLanguage={"cpp"}
         defaultValue={Code}
-        height={"60vh"}
+        height={"500px"}
       />
     </Card>
   );
