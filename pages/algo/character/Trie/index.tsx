@@ -2,14 +2,21 @@ import { message } from "antd";
 import EChartsReact from "echarts-for-react";
 import { useEffect, useRef, useState } from "react";
 import { TrieNodeItemOption, TrieOption } from "./Trie.ds";
-import { defaultOption, defaultRoot } from "./const";
 import { deepCopy } from "../../../../functions/common";
+import { defaultOption, defaultRoot } from "./const";
 import PanelTrieDisplay from "./PanelTrieDisplay";
 import PanelTrieControl from "./PanelTrieControl";
+import { GetStaticProps } from "next";
+import { readFileSync } from "fs";
+import { join } from "path";
+import AlgoLayoutTrie from "../../../../components/layout/AlgoLayoutTrie";
 
-export const PanelTrie = ({ Case }) => {
+export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
+  const modifyCase = (e) => setCase(e);
+  const resetCase = () => setCase(CaseInput);
+  const [Case, setCase] = useState(CaseInput);
+  console.log({ CaseInMain: Case });
   const refLogs = useRef<Array<string>>([]);
-
   const [step, setStep] = useState(0); // 总共第几个字符（字符id）
   const refSeqs = useRef<Array<string>>(null); // 字符串数组
   const refSeq_i = useRef(0); // 第几个字符串
@@ -138,19 +145,41 @@ export const PanelTrie = ({ Case }) => {
   };
 
   return (
-    <div>
-      <PanelTrieDisplay
-        echartOption={refOption.current}
-        refEchart={refEchart}
-      />
-      <PanelTrieControl
-        addChar={addChar}
-        addStr={addStr}
-        reRun={initOption}
-        content={refLogs.current}
-      />
-    </div>
+    <AlgoLayoutTrie
+      Case={Case}
+      modifyCase={modifyCase}
+      resetCase={initOption}
+      Code={CodeInput}
+    >
+      <div>
+        <PanelTrieDisplay
+          echartOption={refOption.current}
+          refEchart={refEchart}
+        />
+        <PanelTrieControl
+          addChar={addChar}
+          addStr={addStr}
+          reRun={initOption}
+          content={refLogs.current}
+        />
+      </div>
+    </AlgoLayoutTrie>
   );
 };
 
-export default PanelTrie;
+export default VisualAlgoTrie;
+
+const CodePath = "pages/algo/character/trie/code.cpp";
+const CasePath = "pages/algo/character/trie/case1.txt";
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const CaseInput = await readFileSync(join(process.cwd(), CasePath), "utf-8");
+  const CodeInput = await readFileSync(join(process.cwd(), CodePath), "utf-8");
+  console.log({ CaseInput });
+  return {
+    props: {
+      CaseInput,
+      CodeInput,
+    },
+  };
+};

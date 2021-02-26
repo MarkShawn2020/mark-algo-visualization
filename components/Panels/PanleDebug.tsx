@@ -1,4 +1,4 @@
-import MarkIcon from "../../icons/antdIcons";
+import MarkIcon from "../icons/antdIcons";
 import { Card, Tooltip } from "antd";
 
 const ConsoleControls = () => {

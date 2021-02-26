@@ -1,10 +1,10 @@
 import { Layout } from "antd";
-import LayoutFooter from "../components/layout/LayoutFooter";
-import LayoutHeader from "../components/layout/LayoutHeader";
-import LayoutSider from "../components/layout/LayoutSider";
+import LayoutFooter from "../layout/LayoutFooter";
+import LayoutHeader from "../layout/LayoutHeader";
+import LayoutSider from "../layout/LayoutSider";
 const { Header, Content, Sider, Footer } = Layout;
 
-const IndexPage = () => {
+const AlgoLayout = ({ children }) => {
   return (
     <Layout>
       <Header>
@@ -16,9 +16,7 @@ const IndexPage = () => {
           <LayoutSider />
         </Sider>
 
-        <Content className="site-layout-background text-red-500 flex justify-center items-center">
-          {"Welcome to Home of Algo Visualization ! "}
-        </Content>
+        <Content className="site-layout-background">{children}</Content>
       </Layout>
 
       <Footer className="flex justify-center">
@@ -28,4 +26,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default AlgoLayout;

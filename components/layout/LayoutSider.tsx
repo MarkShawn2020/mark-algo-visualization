@@ -1,7 +1,8 @@
 import { Appendix, AppendixItem_I } from "../appendix";
-import MarkIcon from "../../icons/antdIcons";
+import MarkIcon from "../icons/antdIcons";
 import { Menu } from "antd";
 import SubMenu from "antd/lib/menu/SubMenu";
+import Link from "next/link";
 
 const AppendixItem = (item: AppendixItem_I) =>
   item.children ? (
@@ -13,7 +14,13 @@ const AppendixItem = (item: AppendixItem_I) =>
       {item.children.map((subItem) => AppendixItem(subItem))}
     </SubMenu>
   ) : (
-    <Menu.Item key={item.title_cn}>{item.title_cn}</Menu.Item>
+    <Menu.Item key={item.title_cn}>
+      {item.path ? (
+        <Link href={item.path}>{item.title_cn}</Link>
+      ) : (
+        item.title_cn
+      )}
+    </Menu.Item>
   );
 
 const LayoutSider = () => {
