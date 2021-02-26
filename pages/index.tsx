@@ -54,7 +54,7 @@ const MarkLayout = ({ CodeInput, CaseInput }) => {
         </Content>
       </Layout>
 
-      <Footer>
+      <Footer className="flex justify-center">
         <LayoutFooter />
       </Footer>
     </Layout>
