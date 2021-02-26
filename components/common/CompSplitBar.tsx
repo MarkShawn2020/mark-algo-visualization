@@ -1,4 +1,4 @@
-import * as Resizer from "../../LC_ResizableBar";
+import * as Resizer from "../LC_ResizableBar";
 
 export const CompSplitBar = () => {
   return (

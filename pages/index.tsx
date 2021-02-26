@@ -1,37 +1,62 @@
 import { GetStaticProps } from "next";
-import PanelAppendix from "../components/AlgoVisualization/layout/PanelAppendix";
 import { readFileSync } from "fs";
 import { join } from "path";
-
-import { Layout, Menu } from "antd";
-import GridAlgoVisualization from "../components/AlgoVisualization/layout/GridAlgoVisualization";
-const { Header, Content, Sider } = Layout;
+import { Layout } from "antd";
+import { useState } from "react";
+import * as Resizer from "../components/LC_ResizableBar";
+import PanelTrie from "../components/AlgoVisualization/character/trie/PanelTrie";
+import CompSplitBar from "../components/common/CompSplitBar";
+import { PanelCase } from "../components/AlgoVisualization/Panels/PanelCase";
+import PanelCode from "../components/AlgoVisualization/Panels/PanleCode";
+import LayoutFooter from "../components/AlgoVisualization/layout/LayoutFooter";
+import LayoutHeader from "../components/AlgoVisualization/layout/LayoutHeader";
+import LayoutSider from "../components/AlgoVisualization/layout/LayoutSider";
+const { Header, Content, Sider, Footer } = Layout;
 
 const MarkLayout = ({ CodeInput, CaseInput }) => {
+  const modifyCase = (e) => setCase(e);
+  const resetCase = () => setCase(CaseInput);
+  const [Case, setCase] = useState(CaseInput);
+  console.log({ CaseInMain: Case });
+
   return (
-    <Layout className="min-h-screen">
-      <Header className="header">
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">算法可视化</Menu.Item>
-          <Menu.Item key="2">算法游戏</Menu.Item>
-          <Menu.Item key="3">算法笔记</Menu.Item>
-        </Menu>
+    <Layout>
+      <Header>
+        <LayoutHeader />
       </Header>
+
       <Layout>
         <Sider width={200} className="site-layout-background">
-          <PanelAppendix />
+          <LayoutSider />
         </Sider>
 
-        <Layout>
-          <Content className="site-layout-background min-h-screen text-red-500">
-            <GridAlgoVisualization
-              CaseInput={CaseInput}
-              CodeInput={CodeInput}
-            />
-          </Content>
-        </Layout>
+        <Content className="site-layout-background text-red-500">
+          <section>
+            <Resizer.Container>
+              {/* display and control */}
+              <Resizer.Section minSize={600}>
+                <PanelTrie Case={Case} />
+              </Resizer.Section>
+
+              <CompSplitBar />
+
+              {/* case and code */}
+              <Resizer.Section>
+                <PanelCase
+                  Case={Case}
+                  modifyCase={modifyCase}
+                  resetCase={resetCase}
+                />
+                <PanelCode Code={CodeInput} />
+              </Resizer.Section>
+            </Resizer.Container>
+          </section>
+        </Content>
       </Layout>
+
+      <Footer>
+        <LayoutFooter />
+      </Footer>
     </Layout>
   );
 };

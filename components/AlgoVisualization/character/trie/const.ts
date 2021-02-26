@@ -1,5 +1,4 @@
-import { TrieNodeItemOption } from "./G6_sample_data";
-import { TrieOption } from "./Trie.ds";
+import { TrieNodeItemOption, TrieOption } from "./Trie.ds";
 
 export const defaultRoot: TrieNodeItemOption = {
   id: 0,

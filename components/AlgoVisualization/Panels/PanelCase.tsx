@@ -1,17 +1,24 @@
-import { Button, Card, message, Tooltip } from "antd";
-import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
-const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
-  ssr: false,
-});
+import { Button, Card, message } from "antd";
+import MonacoEditor from "@monaco-editor/react";
 
 const CaseControls = ({ onModify, onReset }) => {
   return (
-    <div>
-      <Button type={"primary"} onClick={onModify} className="mr-4">
+    <div className="inline-flex">
+      <Button
+        type={"primary"}
+        size={"small"}
+        onClick={onModify}
+        className="mr-4"
+      >
         修改测例
       </Button>
-      <Button type={"primary"} danger onClick={onReset} className="mr-4">
+      <Button
+        type={"primary"}
+        size={"small"}
+        danger
+        onClick={onReset}
+        className="mr-4"
+      >
         重置测例
       </Button>
     </div>
@@ -26,6 +33,7 @@ export const PanelCase = ({ Case, modifyCase, resetCase }) => {
   return (
     <Card
       title={"case"}
+      bodyStyle={{ height: 200 }}
       extra={
         <CaseControls
           onModify={() => handleModifyCase(Case)}
@@ -45,3 +53,5 @@ export const PanelCase = ({ Case, modifyCase, resetCase }) => {
     </Card>
   );
 };
+
+export default PanelCase;

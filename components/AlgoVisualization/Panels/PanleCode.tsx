@@ -1,13 +1,9 @@
 import { Card } from "antd";
-
-import dynamic from "next/dynamic";
-const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
-  ssr: false,
-});
+import MonacoEditor from "@monaco-editor/react";
 
 export const PanelCode = ({ Code: Code }) => {
   return (
-    <Card title={"code"}>
+    <Card title={"code"} bodyStyle={{ height: 600 }}>
       <MonacoEditor
         defaultPath={"code.cpp"}
         theme={"light"}

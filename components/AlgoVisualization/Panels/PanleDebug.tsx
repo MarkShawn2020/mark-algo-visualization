@@ -29,7 +29,12 @@ const ConsoleControls = () => {
 
 const PanelConsole = () => {
   return (
-    <Card title={"console"} className="w-full" extra={<ConsoleControls />}>
+    <Card
+      title={"debug"}
+      className="w-full"
+      extra={<ConsoleControls />}
+      bodyStyle={{ maxHeight: 200 }}
+    >
       {">>>"}
     </Card>
   );

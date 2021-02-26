@@ -1,61 +1,13 @@
+import { message } from "antd";
 import EChartsReact from "echarts-for-react";
-import { TrieNodeItemOption } from "./G6_sample_data";
 import { useEffect, useRef, useState } from "react";
-import { Breadcrumb, Button, Card, message } from "antd";
-import { DisplayTrieProps, TrieOption } from "./Trie.ds";
+import { TrieNodeItemOption, TrieOption } from "./Trie.ds";
 import { defaultOption, defaultRoot } from "./const";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { deepCopy } from "../../../../functions/common";
+import PanelTrieDisplay from "./PanelTrieDisplay";
+import PanelTrieControl from "./PanelTrieControl";
 
-const deepCopy = (e) => JSON.parse(JSON.stringify(e));
-
-const CompBreadcrumb = () => (
-  <div>
-    <Breadcrumb>
-      <Breadcrumb.Item>算法可视化</Breadcrumb.Item>
-      <Breadcrumb.Item>字符串</Breadcrumb.Item>
-      <Breadcrumb.Item>构造字典树</Breadcrumb.Item>
-    </Breadcrumb>
-  </div>
-);
-
-const CompTrieControls = ({ content, addChar, addStr, reRun }) => {
-  return (
-    <Card
-      title={"console"}
-      extra={
-        <div className="inline-flex">
-          <Button type={"primary"} className="mr-2" onClick={addChar}>
-            下一个字符
-          </Button>
-
-          <Button type={"primary"} className="mr-2" onClick={addStr}>
-            下一个字符串
-          </Button>
-
-          <Button type={"primary"} className="mr-2" onClick={reRun}>
-            重新运行
-          </Button>
-        </div>
-      }
-    >
-      <SyntaxHighlighter
-        language={"plain-text"}
-        customStyle={{
-          maxHeight: 200,
-          overflow: "auto",
-          display: "flex",
-          flexDirection: "column-reverse",
-        }}
-      >
-        {content.join("\n")}
-      </SyntaxHighlighter>
-    </Card>
-  );
-};
-
-export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
-  console.log({ CaseInDisplay: Case });
-
+export const PanelTrie = ({ Case }) => {
   const refLogs = useRef<Array<string>>([]);
 
   const [step, setStep] = useState(0); // 总共第几个字符（字符id）
@@ -187,24 +139,18 @@ export const DisplayTrie = ({ Case }: DisplayTrieProps) => {
 
   return (
     <div>
-      <Card title={<CompBreadcrumb />}>
-        <EChartsReact
-          option={refOption.current}
-          notMerge={true}
-          ref={(e) => (refEchart.current = e)}
-          style={{ height: 400, width: 600 }}
-          opts={{ renderer: "svg" }}
-        />
-      </Card>
-
-      <CompTrieControls
-        reRun={initOption}
-        addStr={addStr}
+      <PanelTrieDisplay
+        echartOption={refOption.current}
+        refEchart={refEchart}
+      />
+      <PanelTrieControl
         addChar={addChar}
+        addStr={addStr}
+        reRun={initOption}
         content={refLogs.current}
       />
     </div>
   );
 };
 
-export default DisplayTrie;
+export default PanelTrie;

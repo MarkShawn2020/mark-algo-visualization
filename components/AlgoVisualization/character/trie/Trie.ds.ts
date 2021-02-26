@@ -1,7 +1,12 @@
 import { TreeSeriesOption } from "echarts/charts";
-import { TrieNodeItemOption } from "./G6_sample_data";
 import { EChartOption } from "echarts";
 
+import { TreeSeriesNodeItemOption } from "echarts/types/src/chart/tree/TreeSeries";
+
+export interface TrieNodeItemOption extends TreeSeriesNodeItemOption {
+  id: number;
+  children?: TrieNodeItemOption[];
+}
 export interface TrieSeries extends Omit<TreeSeriesOption, "data"> {
   data: TrieNodeItemOption[];
 }

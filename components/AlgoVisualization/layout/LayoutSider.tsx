@@ -16,17 +16,19 @@ const AppendixItem = (item: AppendixItem_I) =>
     <Menu.Item key={item.title_cn}>{item.title_cn}</Menu.Item>
   );
 
-const PanelAppendix = () => {
+const LayoutSider = () => {
   return (
-    <Menu
-      mode="inline"
-      defaultSelectedKeys={["1"]}
-      defaultOpenKeys={["sub1"]}
-      style={{ height: "100%", borderRight: 0 }}
-    >
-      {Appendix.map((item) => AppendixItem(item))}
-    </Menu>
+    <div>
+      <Menu
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
+        style={{ height: "100%", borderRight: 0 }}
+      >
+        {Appendix.map((item) => AppendixItem(item))}
+      </Menu>
+    </div>
   );
 };
 
-export default PanelAppendix;
+export default LayoutSider;
