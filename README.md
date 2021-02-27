@@ -11,7 +11,7 @@
 目前前端使用 next 框架，语言是 typescript。
 
 ### UI框架
-antd 为主体，算法演示部分使用 E6、echarts 或者 d3。
+antd 为主体，算法演示部分使用 echarts 或者 d3。
 
 
 ## 算法清单

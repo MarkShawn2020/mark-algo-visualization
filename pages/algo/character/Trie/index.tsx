@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { TrieNodeItemOption, TrieOption } from "./Trie.ds";
 import { deepCopy } from "../../../../functions/common";
 import { defaultOption, defaultRoot } from "./const";
-import PanelTrieDisplay from "./PanelTrieDisplay";
-import PanelTrieControl from "./PanelTrieControl";
+import PanelTrie_1_Display from "./PanelTrie_1_Display";
+import PanelTrie_2_Case from "./PanelTrie_2_Case";
+import PanelTrie_3_Control from "./PanelTrie_3_Control";
 import { GetStaticProps } from "next";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -85,35 +86,6 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
           color: refSeq_j.current === seq.length - 1 ? "#c33" : "#ccc",
         },
         children: [],
-        // label: {
-        //   position: "right",
-        //   distance: 40,
-        //   fontSize: 14,
-        //   formatter: "{a|{a}}\n{hr|}\n{b|{b}}",
-        //   backgroundColor: "#F6F8FC",
-        //   borderColor: "#8C8D8E",
-        //   borderWidth: 1,
-        //   borderRadius: 4,
-        //   rich: {
-        //     a: {
-        //       color: "#6e7079",
-        //       lineHeight: 22,
-        //       align: "center",
-        //     },
-        //     hr: {
-        //       borderColor: "#8C8D8E",
-        //       width: "100%",
-        //       borderWidth: 1,
-        //       height: 0,
-        //     },
-        //     b: {
-        //       color: "#4C5058",
-        //       fontSize: 14,
-        //       fontWeight: "bold",
-        //       lineHeight: 33,
-        //     },
-        //   },
-        // },
       };
       node.children.push(child);
     }
@@ -145,18 +117,20 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   };
 
   return (
-    <AlgoLayoutTrie
-      Case={Case}
-      modifyCase={modifyCase}
-      resetCase={initOption}
-      Code={CodeInput}
-    >
+    <AlgoLayoutTrie Code={CodeInput}>
       <div>
-        <PanelTrieDisplay
+        <PanelTrie_1_Display
           echartOption={refOption.current}
           refEchart={refEchart}
         />
-        <PanelTrieControl
+
+        <PanelTrie_2_Case
+          Case={Case}
+          modifyCase={modifyCase}
+          resetCase={resetCase}
+        />
+
+        <PanelTrie_3_Control
           addChar={addChar}
           addStr={addStr}
           reRun={initOption}

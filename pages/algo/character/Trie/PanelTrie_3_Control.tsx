@@ -1,11 +1,11 @@
 import { Button, Card } from "antd";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-const PanelTrieControl = ({ content, addChar, addStr, reRun }) => {
+const PanelTrie_3_Control = ({ content, addChar, addStr, reRun }) => {
   return (
     <Card
       title={"console"}
-      bodyStyle={{ height: 200 }}
+      style={{ height: 250 }}
       extra={
         <div className="inline-flex">
           <Button type={"primary"} className="mr-2" onClick={addChar}>
@@ -25,7 +25,7 @@ const PanelTrieControl = ({ content, addChar, addStr, reRun }) => {
       <SyntaxHighlighter
         language={"plain-text"}
         customStyle={{
-          maxHeight: 200,
+          maxHeight: 180,
           overflow: "auto",
           display: "flex",
           flexDirection: "column-reverse",
@@ -37,4 +37,4 @@ const PanelTrieControl = ({ content, addChar, addStr, reRun }) => {
   );
 };
 
-export default PanelTrieControl;
+export default PanelTrie_3_Control;

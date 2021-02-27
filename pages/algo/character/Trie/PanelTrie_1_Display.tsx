@@ -11,11 +11,12 @@ const CompBreadcrumb = () => (
   </div>
 );
 
-export const PanelTrieDisplay = ({ refEchart, echartOption }) => {
+export const PanelTrie_1_Display = ({ refEchart, echartOption }) => {
   return (
     <Card
       title={<CompBreadcrumb />}
-      bodyStyle={{ height: 600 }}
+      style={{ height: 450 }}
+      bodyStyle={{ maxHeight: 400 }}
       extra={
         <div className="inline-flex">
           <Button type={"primary"} className="mr-2">
@@ -39,4 +40,4 @@ export const PanelTrieDisplay = ({ refEchart, echartOption }) => {
   );
 };
 
-export default PanelTrieDisplay;
+export default PanelTrie_1_Display;
