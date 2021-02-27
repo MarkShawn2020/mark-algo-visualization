@@ -76,7 +76,9 @@ const text = readFileSync('path-to-file.txt', 'utf8');
 ```
 
 ### Resizer Bar Component Implementation
-> thanks for: LeetCode-OpenSource/react-simple-resizer: 🐙 An intuitive React component set for multi-column resizing - https://github.com/LeetCode-OpenSource/react-simple-resizer
+> LeetCode-OpenSource/react-simple-resizer: 🐙 An intuitive React component set for multi-column resizing - https://github.com/LeetCode-OpenSource/react-simple-resizer
+
+这是一个让我很兴奋的组件，因为当时就是比较喜欢力扣的resizer，也从它们的F12中知道他们是使用react开发的，但没想到，他们竟然还开源了这个组件，简直美滋滋~
 
 ### Code typography
 > - react-syntax-highlighter - npm - https://www.npmjs.com/package/react-syntax-highlighter
