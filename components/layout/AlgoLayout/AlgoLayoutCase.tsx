@@ -4,7 +4,7 @@ const { TextArea } = Input;
 export const AlgoLayoutCase = ({ Case, modifyCase, resetCase }) => {
   return (
     <Card
-      title={"case"}
+      title={"Input Case"}
       style={{ height: 200 }}
       extra={
         <div className="inline-flex">
