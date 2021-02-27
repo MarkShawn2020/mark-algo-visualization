@@ -41,7 +41,6 @@ const AlgoLayoutControl = ({
       }
     >
       <SyntaxHighlighter
-        language={"plain-text"}
         customStyle={{
           maxHeight: 180,
           overflow: "auto",

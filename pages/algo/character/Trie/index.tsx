@@ -7,10 +7,10 @@ import { defaultOption, defaultRoot } from "./const";
 import { GetStaticProps } from "next";
 import { readFileSync } from "fs";
 import { join } from "path";
-import AlgoLayoutTrie from "../../../../components/layout/AlgoLayoutTrie";
 import AlgoLayoutCase from "../../../../components/layout/AlgoLayoutCase";
 import AlgoLayoutControl from "../../../../components/layout/AlgoLayoutControl";
 import AlgoLayoutDisplay from "../../../../components/layout/AlgoLayoutDisplay";
+import AlgoLayout from "../../../../components/layout/AlgoLayout";
 
 export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   const modifyCase = (e) => setCase(e);
@@ -86,6 +86,9 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
           color: refSeq_j.current === seq.length - 1 ? "#c33" : "#ccc",
         },
         children: [],
+        tooltip: {
+          formatter: "{c}",
+        },
       };
       node.children.push(child);
     }
@@ -117,7 +120,7 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   };
 
   return (
-    <AlgoLayoutTrie>
+    <AlgoLayout>
       <div>
         <AlgoLayoutDisplay paths={["算法可视化", "字符串", "字典树的构造"]}>
           <EChartsReact
@@ -150,7 +153,7 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
           ]}
         />
       </div>
-    </AlgoLayoutTrie>
+    </AlgoLayout>
   );
 };
 

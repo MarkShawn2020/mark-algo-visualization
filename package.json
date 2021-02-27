@@ -11,10 +11,12 @@
     "@ant-design/icons": "^4.5.0",
     "@monaco-editor/react": "^4.0.10",
     "@types/echarts": "^4.9.3",
+    "@uiw/react-markdown-preview": "^2.1.1",
     "antd": "^4.12.3",
     "css-loader": "^5.0.2",
     "echarts": "^5.0.2",
     "echarts-for-react": "^3.0.0",
+    "less": "^4.1.1",
     "monaco-editor-webpack-plugin": "^3.0.0",
     "next": "10.0.7",
     "react": "17.0.1",
@@ -28,12 +30,14 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "@zeit/next-less": "^1.0.1",
     "autoprefixer": "^10.2.4",
     "babel-plugin-static-fs": "^3.0.0",
     "postcss": "^8.2.6",
     "prettier": "^2.2.1",
     "react-grid-layout": "^1.2.0",
     "tailwindcss": "^2.0.3",
-    "typescript": "^4.1.5"
+    "typescript": "^4.1.5",
+    "webpack": "^5.24.2"
   }
 }

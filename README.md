@@ -99,6 +99,10 @@ yarn add react-monaco-editor
 - [How To Add Monaco Editor to a Next.js app - DEV Community](https://dev.to/swyx/how-to-add-monaco-editor-to-a-next-js-app-ha3)
 - [@monaco-editor/react - npm](https://www.npmjs.com/package/@monaco-editor/react)
 
+### markdown preview
+thanks for the package `@uiw/react-markdown-preview`.
+
+But since it depends on some global packages, I transfered it into local. 
 
 ### Environment Variable Config
 > - [Basic Features: Environment Variables | Next.js](https://nextjs.org/docs/basic-features/environment-variables)

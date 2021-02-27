@@ -1,3 +1,7 @@
+@import "./md_preview_styles/markdown.css";
+@import "./md_preview_styles/markdowncolor.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
