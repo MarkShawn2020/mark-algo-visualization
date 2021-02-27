@@ -1,4 +1,4 @@
-import { TrieNodeItemOption, TrieOption } from "./Trie.ds";
+import { TrieNodeItemOption, TrieOption } from "./Trie";
 
 export const defaultRoot: TrieNodeItemOption = {
   id: 0,

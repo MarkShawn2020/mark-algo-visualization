@@ -1,16 +1,16 @@
 import { message } from "antd";
 import EChartsReact from "echarts-for-react";
 import { useEffect, useRef, useState } from "react";
-import { TrieNodeItemOption, TrieOption } from "./Trie.ds";
+import { TrieNodeItemOption, TrieOption } from "./Trie";
 import { deepCopy } from "../../../../functions/common";
 import { defaultOption, defaultRoot } from "./const";
-import PanelTrie_1_Display from "./PanelTrie_1_Display";
-import PanelTrie_2_Case from "./PanelTrie_2_Case";
-import PanelTrie_3_Control from "./PanelTrie_3_Control";
 import { GetStaticProps } from "next";
 import { readFileSync } from "fs";
 import { join } from "path";
 import AlgoLayoutTrie from "../../../../components/layout/AlgoLayoutTrie";
+import AlgoLayoutCase from "../../../../components/layout/AlgoLayoutCase";
+import AlgoLayoutControl from "../../../../components/layout/AlgoLayoutControl";
+import AlgoLayoutDisplay from "../../../../components/layout/AlgoLayoutDisplay";
 
 export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   const modifyCase = (e) => setCase(e);
@@ -117,24 +117,37 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   };
 
   return (
-    <AlgoLayoutTrie Code={CodeInput}>
+    <AlgoLayoutTrie>
       <div>
-        <PanelTrie_1_Display
-          echartOption={refOption.current}
-          refEchart={refEchart}
-        />
+        <AlgoLayoutDisplay paths={["算法可视化", "字符串", "字典树的构造"]}>
+          <EChartsReact
+            ref={refEchart}
+            option={refOption.current}
+            notMerge={true}
+            style={{ height: 400, width: 600 }}
+            opts={{ renderer: "svg" }}
+          />
+        </AlgoLayoutDisplay>
 
-        <PanelTrie_2_Case
+        <AlgoLayoutCase
           Case={Case}
           modifyCase={modifyCase}
           resetCase={resetCase}
         />
 
-        <PanelTrie_3_Control
-          addChar={addChar}
-          addStr={addStr}
-          reRun={initOption}
+        <AlgoLayoutControl
           content={refLogs.current}
+          reRun={initOption}
+          extraControls={[
+            {
+              value: "下一个字符",
+              method: addChar,
+            },
+            {
+              value: "下一个字符串",
+              method: addStr,
+            },
+          ]}
         />
       </div>
     </AlgoLayoutTrie>

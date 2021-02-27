@@ -3,7 +3,7 @@ import * as Resizer from "../LC_ResizableBar";
 import CompSplitBar from "../common/CompSplitBar";
 import PanelCode from "../Panels/PanleCode";
 
-export const AlgoLayoutTrie = ({ Code, children }) => {
+export const AlgoLayoutTrie = ({ children }) => {
   return (
     <AlgoLayout>
       <section>
@@ -15,7 +15,7 @@ export const AlgoLayoutTrie = ({ Code, children }) => {
 
           {/* case and code */}
           <Resizer.Section>
-            <PanelCode Code={Code} />
+            <PanelCode />
           </Resizer.Section>
         </Resizer.Container>
       </section>

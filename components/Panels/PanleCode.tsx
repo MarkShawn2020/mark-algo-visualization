@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import MonacoEditor from "@monaco-editor/react";
 
-export const PanelCode = ({ Code: Code }) => {
+export const PanelCode = () => {
   return (
     <Card
       title={"code"}
@@ -13,7 +13,7 @@ export const PanelCode = ({ Code: Code }) => {
         defaultPath={"code.cpp"}
         theme={"light"}
         defaultLanguage={"cpp"}
-        defaultValue={Code}
+        defaultValue=""
       />
     </Card>
   );

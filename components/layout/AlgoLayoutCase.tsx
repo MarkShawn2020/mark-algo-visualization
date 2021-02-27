@@ -1,8 +1,7 @@
-import { Button, Card, message, Input } from "antd";
-import { useRef, useState } from "react";
+import { Button, Card, Input } from "antd";
 const { TextArea } = Input;
 
-export const PanelTrie_2_Case = ({ Case, modifyCase, resetCase }) => {
+export const AlgoLayoutCase = ({ Case, modifyCase, resetCase }) => {
   return (
     <Card
       title={"case"}
@@ -31,4 +30,4 @@ export const PanelTrie_2_Case = ({ Case, modifyCase, resetCase }) => {
   );
 };
 
-export default PanelTrie_2_Case;
+export default AlgoLayoutCase;
