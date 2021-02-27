@@ -1,9 +1,9 @@
 import { Layout } from "antd";
-import LayoutFooter from "../layout/LayoutFooter";
-import LayoutHeader from "../layout/LayoutHeader";
-import LayoutSider from "../layout/LayoutSider";
-import * as Resizer from "../LC_ResizableBar";
-import CompSplitBar from "../common/CompSplitBar";
+import LayoutFooter from "../GlobalLayout/LayoutFooter";
+import LayoutHeader from "../GlobalLayout/LayoutHeader";
+import LayoutSider from "../GlobalLayout/LayoutSider";
+import * as Resizer from "../../LC_ResizableBar";
+import CompSplitBar from "../../common/CompSplitBar";
 import AlgoLayoutNote from "./AlgoLayoutNote";
 const { Header, Sider, Footer, Content } = Layout;
 

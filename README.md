@@ -134,3 +134,10 @@ npm i @types/echarts
 最佳解决方案是用`flex`，感谢这位回答
 - [javascript - Keep overflow div scrolled to bottom unless user scrolls up - Stack Overflow](https://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up)
 
+
+### Less Support
+项目中没有直接使用启用`less`支持，主要是配置`less`的`next.config.js`会和`taiwindCss`产生冲突，并且尚未合适的解决方案。
+
+由于在项目中本地化了`react-markdown-preview`的代码，它有两个`less`文件，于是直接在本地使用IDE支持的全局`less`进行文件转译`css`办法，这样在项目中导入的时候还是基于`css`的，无需考虑`less`。
+
+当然，这项解决方案未来可能会有变动。

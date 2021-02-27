@@ -1,7 +1,7 @@
 import { Button, Card } from "antd";
 import MonacoEditor from "@monaco-editor/react";
 import { useState } from "react";
-import MarkdownPreview from "../md_preview";
+import MarkdownPreview from "../../md_preview";
 
 const DefaultNote = `
 # 这里可以记录你的笔记

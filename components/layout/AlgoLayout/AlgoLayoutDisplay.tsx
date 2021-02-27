@@ -15,7 +15,7 @@ export const AlgoLayoutDisplay = ({ paths, children }) => {
     <Card
       title={<CompBreadcrumb paths={paths} />}
       style={{ height: 450 }}
-      bodyStyle={{ maxHeight: 400 }}
+      bodyStyle={{ height: 400 }}
       extra={
         <div className="inline-flex">
           <Button type={"primary"} className="mr-2">

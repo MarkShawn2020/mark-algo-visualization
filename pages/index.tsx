@@ -1,7 +1,7 @@
 import { Layout } from "antd";
-import LayoutFooter from "../components/layout/LayoutFooter";
-import LayoutHeader from "../components/layout/LayoutHeader";
-import LayoutSider from "../components/layout/LayoutSider";
+import LayoutFooter from "../components/layout/GlobalLayout/LayoutFooter";
+import LayoutHeader from "../components/layout/GlobalLayout/LayoutHeader";
+import LayoutSider from "../components/layout/GlobalLayout/LayoutSider";
 const { Header, Content, Sider, Footer } = Layout;
 
 const IndexPage = () => {

@@ -1,5 +1,5 @@
-import { Appendix, AppendixItem_I } from "../appendix";
-import MarkIcon from "../icons/antdIcons";
+import { Appendix, AppendixItem_I } from "../../appendix";
+import MarkIcon from "../../icons/antdIcons";
 import { Menu } from "antd";
 import SubMenu from "antd/lib/menu/SubMenu";
 import Link from "next/link";

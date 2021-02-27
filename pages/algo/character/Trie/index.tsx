@@ -7,10 +7,10 @@ import { defaultOption, defaultRoot } from "./const";
 import { GetStaticProps } from "next";
 import { readFileSync } from "fs";
 import { join } from "path";
-import AlgoLayoutCase from "../../../../components/layout/AlgoLayoutCase";
-import AlgoLayoutControl from "../../../../components/layout/AlgoLayoutControl";
-import AlgoLayoutDisplay from "../../../../components/layout/AlgoLayoutDisplay";
-import AlgoLayout from "../../../../components/layout/AlgoLayout";
+import AlgoLayoutCase from "../../../../components/layout/AlgoLayout/AlgoLayoutCase";
+import AlgoLayoutControl from "../../../../components/layout/AlgoLayout/AlgoLayoutControl";
+import AlgoLayoutDisplay from "../../../../components/layout/AlgoLayout/AlgoLayoutDisplay";
+import AlgoLayout from "../../../../components/layout/AlgoLayout/AlgoLayout";
 
 export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   const modifyCase = (e) => setCase(e);
