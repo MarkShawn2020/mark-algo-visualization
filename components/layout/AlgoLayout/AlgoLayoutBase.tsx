@@ -4,7 +4,7 @@ import LayoutHeader from "../GlobalLayout/LayoutHeader";
 import LayoutSider from "../GlobalLayout/LayoutSider";
 import * as Resizer from "../../LC_ResizableBar";
 import CompSplitBar from "../../common/CompSplitBar";
-import AlgoLayoutNote from "./AlgoLayoutNote";
+import AlgoLayoutRight from "./AlgoLayoutRight";
 const { Header, Sider, Footer, Content } = Layout;
 
 const AlgoLayoutBase = ({ children }) => {
@@ -28,7 +28,7 @@ const AlgoLayoutBase = ({ children }) => {
 
             {/* case and code */}
             <Resizer.Section>
-              <AlgoLayoutNote />
+              <AlgoLayoutRight />
             </Resizer.Section>
           </Resizer.Container>
         </Content>

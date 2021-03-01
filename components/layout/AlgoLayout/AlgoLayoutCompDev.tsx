@@ -1,4 +1,8 @@
-import { Button } from "antd";
+import MonacoEditor from "@monaco-editor/react";
+import { useState } from "react";
+
+const codeDevComp = `
+import { Button, Card, message } from "antd";
 import React, { useImperativeHandle } from "react";
 import AlgoLayoutCore, {
   AlgoProps,
@@ -10,8 +14,12 @@ const defaultCase = "acb";
 export const AlgoBubbleSortRef = React.forwardRef(
   ({ curCase, setCurCase, log }: AlgoProps, ref) => {
     useImperativeHandle(ref, () => ({
-      init: () => console.log("init"),
-      next: () => console.log("next"),
+      init: () => {
+        console.log("init");
+      },
+      next: () => {
+        console.log("next");
+      },
       stop: () => false,
     }));
 
@@ -34,3 +42,20 @@ export const AlgoBubbleSort = () => (
 );
 
 export default AlgoBubbleSort;
+`;
+
+export const AlgoLayoutCompDev = () => {
+  const [code, setCode] = useState(codeDevComp);
+  return (
+    <MonacoEditor
+      defaultPath={"dev-comp.tsx"}
+      theme={"vs-dark"}
+      defaultLanguage={"javascript"}
+      defaultValue={code}
+      onChange={setCode}
+      height={850}
+    />
+  );
+};
+
+export default AlgoLayoutCompDev;
