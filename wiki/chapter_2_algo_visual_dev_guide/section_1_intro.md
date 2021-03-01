@@ -14,7 +14,7 @@
 - 其他
 
 ## 布局设计逻辑
-![](./layout.jpg)
+![](https://github.com/MarkShawn2020/mark-algo-visualization/raw/main/wiki/chapter_2_algo_visual_dev_guide/layout.jpg)
 
 在目前的版本中，算法可视化的呈现将位于`Algo Visual Area`，大小为`600px * 400px`。
 
@@ -100,7 +100,7 @@ justify-around: flex的主轴排列为均匀分布（这样看起来美观）
 items-center:	flex的次轴居中排列
 ```
 这样，所有的`button`按钮（用于模拟元素），便是竖直居中了，详见下图。
-![](./visual-display.jpg)
+![](https://github.com/MarkShawn2020/mark-algo-visualization/raw/main/wiki/chapter_2_algo_visual_dev_guide/visual-display.jpg)
 
 在`button`中也有一些`tailwindCSS`的字段设置，都不难理解，对`tailwindCSS`感兴趣，欢迎访问
 - [Documentation - Tailwind CSS](https://tailwindcss.com/docs)
