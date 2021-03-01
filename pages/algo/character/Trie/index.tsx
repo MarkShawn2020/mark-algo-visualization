@@ -8,9 +8,9 @@ import { GetStaticProps } from "next";
 import { readFileSync } from "fs";
 import { join } from "path";
 import AlgoLayoutCase from "../../../../components/layout/AlgoLayout/AlgoLayoutCase";
-import AlgoLayoutControl from "../../../../components/layout/AlgoLayout/AlgoLayoutControl";
+import AlgoLayoutCtrl from "../../../../components/layout/AlgoLayout/AlgoLayoutCtrl";
 import AlgoLayoutDisplay from "../../../../components/layout/AlgoLayout/AlgoLayoutDisplay";
-import AlgoLayout from "../../../../components/layout/AlgoLayout/AlgoLayout";
+import AlgoLayoutBase from "../../../../components/layout/AlgoLayout/AlgoLayoutBase";
 
 export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   const modifyCase = (e) => setCase(e);
@@ -120,17 +120,17 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
   };
 
   return (
-    <AlgoLayout>
+    <AlgoLayoutBase>
       <div>
-        <AlgoLayoutDisplay paths={["算法可视化", "字符串", "字典树的构造"]}>
-          <EChartsReact
-            ref={refEchart}
-            option={refOption.current}
-            notMerge={true}
-            style={{ height: 400, width: 600 }}
-            opts={{ renderer: "svg" }}
-          />
-        </AlgoLayoutDisplay>
+        {/*<AlgoLayoutDisplay paths={["算法可视化", "字符串", "字典树的构造"]}>*/}
+        {/*  <EChartsReact*/}
+        {/*    ref={refEchart}*/}
+        {/*    option={refOption.current}*/}
+        {/*    notMerge={true}*/}
+        {/*    style={{ height: 400, width: 600 }}*/}
+        {/*    opts={{ renderer: "svg" }}*/}
+        {/*  />*/}
+        {/*</AlgoLayoutDisplay>*/}
 
         <AlgoLayoutCase
           Case={Case}
@@ -138,22 +138,22 @@ export const VisualAlgoTrie = ({ CaseInput, CodeInput }) => {
           resetCase={resetCase}
         />
 
-        <AlgoLayoutControl
-          content={refLogs.current}
-          reRun={initOption}
-          extraControls={[
-            {
-              value: "下一个字符",
-              method: addChar,
-            },
-            {
-              value: "下一个字符串",
-              method: addStr,
-            },
-          ]}
-        />
+        {/*<AlgoLayoutControl*/}
+        {/*  content={refLogs.current}*/}
+        {/*  reRun={initOption}*/}
+        {/*  extraControls={[*/}
+        {/*    {*/}
+        {/*      value: "下一个字符",*/}
+        {/*      method: addChar,*/}
+        {/*    },*/}
+        {/*    {*/}
+        {/*      value: "下一个字符串",*/}
+        {/*      method: addStr,*/}
+        {/*    },*/}
+        {/*  ]}*/}
+        {/*/>*/}
       </div>
-    </AlgoLayout>
+    </AlgoLayoutBase>
   );
 };
 

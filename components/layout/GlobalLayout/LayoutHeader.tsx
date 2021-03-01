@@ -8,7 +8,7 @@ export const LayoutHeader = () => {
         <Menu.Item key="1">Visualization</Menu.Item>
         <Menu.Item key="2">InteractiveGames</Menu.Item>
         <Menu.Item key="3">ProblemSets</Menu.Item>
-        <Menu.Item key="3">Documentations</Menu.Item>
+        <Menu.Item key="4">Documentations</Menu.Item>
       </Menu>
     </div>
   );

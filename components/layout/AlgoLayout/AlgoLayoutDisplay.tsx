@@ -1,19 +1,19 @@
 import { Breadcrumb, Button, Card } from "antd";
 
-const CompBreadcrumb = ({ paths }) => (
+export const CompBreadcrumb = ({ nav }) => (
   <div>
     <Breadcrumb>
-      {(paths as Array<string>).map((s, i) => (
+      {(nav as Array<string>).map((s, i) => (
         <Breadcrumb.Item key={i}>{s}</Breadcrumb.Item>
       ))}
     </Breadcrumb>
   </div>
 );
 
-export const AlgoLayoutDisplay = ({ paths, children }) => {
+export const AlgoLayoutDisplay = ({ nav, children }) => {
   return (
     <Card
-      title={<CompBreadcrumb paths={paths} />}
+      title={<CompBreadcrumb nav={nav} />}
       style={{ height: 450 }}
       bodyStyle={{ height: 400 }}
       extra={

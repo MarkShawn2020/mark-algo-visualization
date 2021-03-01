@@ -7,7 +7,7 @@ import CompSplitBar from "../../common/CompSplitBar";
 import AlgoLayoutNote from "./AlgoLayoutNote";
 const { Header, Sider, Footer, Content } = Layout;
 
-const AlgoLayout = ({ children }) => {
+const AlgoLayoutBase = ({ children }) => {
   return (
     <Layout>
       <Header>
@@ -41,4 +41,4 @@ const AlgoLayout = ({ children }) => {
   );
 };
 
-export default AlgoLayout;
+export default AlgoLayoutBase;

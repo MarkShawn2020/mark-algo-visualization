@@ -2,7 +2,7 @@ export const LayoutFooter = () => {
   return (
     <div className="inline-flex justify-center">
       <div className={"mr-4"}>
-        联系南川：{" "}
+        联系管理员（南川）：{" "}
         <a href={"mailto:" + process.env.NEXT_PUBLIC_EMAIL}>
           {process.env.NEXT_PUBLIC_EMAIL}
         </a>

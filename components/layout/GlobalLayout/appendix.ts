@@ -8,7 +8,45 @@ export interface AppendixItem_I {
 
 export const Appendix: AppendixItem_I[] = [
   {
-    title_cn: "基础算法",
+    title_cn: "经典排序",
+    icon: "icon-sort",
+    children: [
+      {
+        title_cn: "冒泡排序",
+        path: "/algo/sort/bubble_sort",
+      },
+      {
+        title_cn: "插入排序",
+        path: "/algo/basic/divide",
+      },
+      {
+        title_cn: "插入排序",
+        path: "/algo/sort/insertion_sort",
+      },
+      {
+        title_cn: "选择排序",
+        path: "/algo/sort/selection_sort",
+      },
+      {
+        title_cn: "快排",
+        path: "/algo/sort/quick_sort",
+      },
+      {
+        title_cn: "归并排序",
+        path: "/algo/sort/merge_sort",
+      },
+      {
+        title_cn: "希尔排序",
+        path: "/algo/sort/shell_sort",
+      },
+      {
+        title_cn: "猴子排序",
+        path: "/algo/sort/mongo_sort",
+      },
+    ],
+  },
+  {
+    title_cn: "基础思想",
     icon: "icon-Icons_Basic_Opti",
     children: [
       {
