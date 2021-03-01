@@ -138,7 +138,7 @@ export default AlgoBubbleSort;
 
 其中`AlgoLayoutCore`是算法可视化页面的整体布局，在其`children`位置填入`AlgoBubbleSortRef`后，会合并渲染`ref`内的信息。
 
-最后的`export default`是不能少的，这是由于我们使用`nextjs`框架，在`pages`文件夹下的每个文件就是一个页面，`nextjs`对这些文件的要求是必须是一个待`default`输出的组件。
+最后的`export default`是不能少的，这是由于我们使用`nextjs`框架，在`pages`文件夹下的每个文件就是一个页面，`nextjs`对这些文件的要求是必须是一个带`default`输出的组件。
 
 ### 最后一点疑问
 `props.curCase`是哪里来的？

@@ -16,16 +16,7 @@ antd 为主体，算法演示部分使用 echarts 或者 d3。
 
 ## 算法清单
 
-### 图论
-#### 最短路径算法
-- [ ] dijkstra
-- [ ] Bellman-Ford
-- [ ] SPFA
-- [ ] floyd
-
-### 红黑树
-
-### 数论
+（详见`interface/appendix.ts`）
 
 ## 加入项目
 - 本项目是长期项目，欢迎 issue、pr、star与fork
